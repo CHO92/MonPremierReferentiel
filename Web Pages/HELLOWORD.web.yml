@@ -10,7 +10,7 @@
       Description:        "Bonjour"
 
   Source: |
-    Begin_Com Role(*EXTENDS £PRIM_WEB) Theme(£SYS_THEME<MaterialDesignBlue>) Height(488) Width(552) Layoutmanager(£LayoutMain)
+    Begin_Com Role(*EXTENDS £PRIM_WEB) Theme(£SYS_THEME<MaterialDesignBlue>) Height(568) Width(704) Layoutmanager(£LayoutMain)
     
     Define_Com Class(£PRIM_TBLO) Name(£LayoutMain)
     Define_Com Class(£PRIM_TBLO.Column) Name(£LayoutMainColumn1) Displayposition(1) Parent(£LayoutMain)
@@ -19,10 +19,12 @@
     Define_Com Class(£PRIM_TBLO.Row) Name(£LayoutMainRow1) Displayposition(1) Parent(£LayoutMain)
     Define_Com Class(£PRIM_TBLO.Row) Name(£LayoutMainRow2) Displayposition(2) Parent(£LayoutMain)
     Define_Com Class(£PRIM_TBLO.Row) Name(£LayoutMainRow3) Displayposition(3) Parent(£LayoutMain)
-    Define_Com Class(£PRIM_TBLO.Item) Name(£LayoutMainItem1) Manage(£Button) Parent(£LayoutMain) Row(£LayoutMainRow1) Sizing(None) Column(£LayoutMainColumn1)
+    Define_Com Class(£PRIM_TBLO.Item) Name(£LayoutMainItem1) Manage(£Button) Parent(£LayoutMain) Row(£LayoutMainRow1) Sizing(None) Column(£LayoutMainColumn3)
     Define_Com Class(£PRIM_TBLO.Item) Name(£LayoutMainItem2) Manage(£Alert) Parent(£LayoutMain) Row(£LayoutMainRow3) Sizing(FitToWidth) Column(£LayoutMainColumn1) Columnspan(3)
-    Define_Com Class(£PRIM_MD.RaisedButton) Name(£Button) Caption('Dis Bonjour') Displayposition(1) Left(42) Parent(£COM_OWNER) Tabposition(1) Themedrawstyle('MediumTitle') Top(63)
-    Define_Com Class(£PRIM_MD.Alert) Name(£Alert) Caption('Réussi! Cette alerte peut indiquer une action réussie ou positive') Displayposition(2) Duration(3000) Parent(£COM_OWNER) Tabposition(2) Themedrawstyle('LightSuccess') Top(379) Width(552)
+    Define_Com Class(£PRIM_TBLO.Item) Name(£LayoutMainItem3) Manage(£Edit) Parent(£LayoutMain) Row(£LayoutMainRow1) Sizing(FitToWidth) Column(£LayoutMainColumn1) Marginleft(11)
+    Define_Com Class(£PRIM_MD.RaisedButton) Name(£Button) Caption('Dis Bonjour') Displayposition(1) Left(537) Parent(£COM_OWNER) Tabposition(1) Themedrawstyle('MediumTitle') Top(77)
+    Define_Com Class(£PRIM_MD.Alert) Name(£Alert) Caption('Réussi! Cette alerte peut indiquer une action réussie ou positive') Displayposition(2) Duration(3000) Parent(£COM_OWNER) Tabposition(2) Themedrawstyle('LightSuccess') Top(445) Width(704)
+    Define_Com Class(£PRIM_MD.Edit) Name(£Edit) Caption('Qui êtes-vous ?') Displayposition(3) Parent(£COM_OWNER) Tabposition(3) Top(58) Width(224) Left(11)
     
     Evtroutine Handling(£Com_owner.Initialize)
     £Alert.Visible := false
@@ -30,7 +32,7 @@
     
     Evtroutine Handling(£Button.Click)
     £Alert.Visible := true
-    £Alert.caption := 'Bonjour à tous'
+    £Alert.caption := 'Bonjour ' + £Edit
     Endroutine
     End_Com
 
